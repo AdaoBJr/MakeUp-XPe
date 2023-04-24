@@ -1,7 +1,7 @@
 // content: ["./src/**/*.{html,js}"],
 /** @type {import('tailwindcss').Config} */
 export default {
-  content: ['./*.html'],
+  content: ['./*.html', './src/app/**/*.{html,js,ts}', './src/services/**/*.{js,ts}'],
   theme: {
     screens: {
       xs: '0px',
