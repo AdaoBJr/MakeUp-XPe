@@ -8,10 +8,8 @@ const resProducts = await getProducts();
 if (resProducts.data.length > 0)
   loadingAnimation({ isFetching: false, querySelector: '#loading' });
 
-console.log('resProducts', resProducts);
-
 const products = document.querySelector('#products')!;
-resProducts.data.forEach((item) => {
+resProducts.data.splice(50, 63).forEach((item) => {
   products.innerHTML += `
   <div
     id="product"
