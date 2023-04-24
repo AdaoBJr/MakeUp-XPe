@@ -15,17 +15,21 @@
     <title>MakeUp - Xpe</title>
   </head>
   <body>
-    <script type="module" src="/scripts.ts"></script>
     <header>Make Up Catalog</header>
     <main class="p-5">
       <!-- FILTROS -->
       <div id="filters">Filtros</div>
 
-      <!-- LOADING -->
-      <div id="loading"></div>
-
       <!-- PRODUTOS -->
-      <div id="products" class="grid grid-cols-3 gap-5"></div>
+      <div id="container-products" class="flex items-center justify-center p-6">
+        <!-- LOADING -->
+        <div id="loading" class="absolute top-1/2 left-1/2"></div>
+        <div
+          id="products"
+          class="grid gap-5 xs:grid-cols-1 sm:grid-cols-3 md:grid-cols-4"
+        ></div>
+      </div>
     </main>
+    <script type="module" src="/scripts.ts"></script>
   </body>
 </html>
