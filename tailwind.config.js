@@ -67,7 +67,7 @@ export default {
         1: '10px',
       },
       fontFamily: {
-        sans: ['Inter'],
+        sans: ['Nunito'],
       },
       boxShadow: {
         0: `0px 2px 4px rgba(0, 0, 0, 0.14),
