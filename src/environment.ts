@@ -6,5 +6,7 @@ export type Environment = 'dev' | 'prd' | 'test';
 
 export const getEnv = () => ({
   ENV: [dev, prd, test].find(Boolean)! as Environment,
-  URL_BASE: 'http://makeup-api.herokuapp.com/api/v1/products.json',
+  URL_BASE: dev
+    ? 'http://localhost:3000/data'
+    : 'http://makeup-api.herokuapp.com/api/v1/products.json',
 });
