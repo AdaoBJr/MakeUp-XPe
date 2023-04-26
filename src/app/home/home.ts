@@ -99,7 +99,11 @@ const { getProducts, getProductsByFilter } = useMakeupApi();
     const products = document.querySelector('#products')!;
     products.innerHTML = '';
 
-    const productsSlicedToAvoidSlow = productsToRender.slice(60, 150);
+    const avoidSlow = false; // ative para diminuir o tamanho do json e diminuir a lentidão resultante da falta de paginação
+
+    const productsSlicedToAvoidSlow = avoidSlow
+      ? productsToRender.slice(60, 150)
+      : productsToRender;
 
     productsSlicedToAvoidSlow.map((item) => {
       products.innerHTML += `
