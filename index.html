@@ -17,8 +17,98 @@
     </header>
     <main class="p-5 mt-28">
       <!-- FILTROS -->
-      <div id="filters">Filtros</div>
-
+      <div id="filters">
+        <label>
+          Nome:
+          <input type="text" id="name" name="name" />
+        </label>
+        <label>
+          Marca:
+          <select name="brand" id="brand">
+            <option value="" selected>Todos</option>
+            <option value="almay">almay</option>
+            <option value="alva">alva</option>
+            <option value="anna sui">anna sui</option>
+            <option value="annabelle">annabelle</option>
+            <option value="benefit">benefit</option>
+            <option value="boosh">boosh</option>
+            <option value="burt's bees">burt's bees</option>
+            <option value="butter london">butter london</option>
+            <option value="c'est moi">c'est moi</option>
+            <option value="cargo cosmetics">cargo cosmetics</option>
+            <option value="china glaze">china glaze</option>
+            <option value="clinique">clinique</option>
+            <option value="coastal classic creation">coastal classic creation</option>
+            <option value="colourpop">colourpop</option>
+            <option value="covergirl">covergirl</option>
+            <option value="dalish">dalish</option>
+            <option value="deciem">deciem</option>
+            <option value="dior">dior</option>
+            <option value="dr. hauschka">dr. hauschka</option>
+            <option value="e.l.f.">e.l.f.</option>
+            <option value="essie">essie</option>
+            <option value="fenty">fenty</option>
+            <option value="glossier">glossier</option>
+            <option value="green people">green people</option>
+            <option value="iman">iman</option>
+            <option value="l'oreal">l'oreal</option>
+            <option value="lotus cosmetics usa">lotus cosmetics usa</option>
+            <option value="maia's mineral galaxy">maia's mineral galaxy</option>
+            <option value="marcelle">marcelle</option>
+            <option value="marienatie">marienatie</option>
+            <option value="maybelline">maybelline</option>
+            <option value="milani">milani</option>
+            <option value="mineral fusion">mineral fusion</option>
+            <option value="misa">misa</option>
+            <option value="mistura">mistura</option>
+            <option value="moov">moov</option>
+            <option value="nudus">nudus</option>
+            <option value="nyx">nyx</option>
+            <option value="orly">orly</option>
+            <option value="pacifica">pacifica</option>
+            <option value="penny lane organics">penny lane organics</option>
+            <option value="physicians formula">physicians formula</option>
+            <option value="piggy paint">piggy paint</option>
+            <option value="pure anada">pure anada</option>
+            <option value="rejuva minerals">rejuva minerals</option>
+            <option value="revlon">revlon</option>
+            <option value="sally b's skin yummies">sally b's skin yummies</option>
+            <option value="salon perfect">salon perfect</option>
+            <option value="sante">sante</option>
+            <option value="sinful colours">sinful colours</option>
+            <option value="smashbox">smashbox</option>
+            <option value="stila">stila</option>
+            <option value="suncoat">suncoat</option>
+            <option value="w3llpeople">w3llpeople</option>
+            <option value="wet n wild">wet n wild</option>
+            <option value="zorah">zorah</option>
+            <option value="zorah biocosmetiques">zorah biocosmetiques</option>
+          </select>
+        </label>
+        <label>
+          Tipo:
+          <select name="type" id="type">
+            <option value="" selected>Todos</option>
+            <option value="bronzer">bronzer</option>
+            <option value="blush">blush</option>
+            <option value="lip_liner">lip_liner</option>
+            <option value="foundation">foundation</option>
+            <option value="eyeshadow">eyeshadow</option>
+            <option value="eyeliner">eyeliner</option>
+            <option value="nail_polish">nail_polish</option>
+            <option value="lipstick">lipstick</option>
+            <option value="mascara">mascara</option>
+            <option value="eyebrow">eyebrow</option>
+          </select>
+        </label>
+        <select name="order" id="order">
+          <option value="rating" selected>Melhores Avaliados</option>
+          <option value="menores-precos">Menores Preços</option>
+          <option value="maiores-precos">Maiores Preços</option>
+          <option value="nome">A-Z</option>
+          <option value="nome-desc">Z-A</option>
+        </select>
+      </div>
       <!-- PRODUTOS -->
       <div id="container-products" class="flex items-center justify-center p-6">
         <!-- LOADING -->
