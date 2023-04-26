@@ -1,5 +1,5 @@
 <div align="center"> 
-  <img src="assets/readme/salon.svg" width="300">
+  <img src="src/assets/readme/salon.svg" width="300">
   <h1> VanillaTS - MakeUp - Faculdade XPe </h1>
 </div>
 
