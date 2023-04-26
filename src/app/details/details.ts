@@ -17,7 +17,7 @@ productDetail.innerHTML = `
         >
         <img
           id="product-${details.id}"
-          class="w-full"
+          class="w-full max-h-[500px]"
           src=${details.image_link}
           onerror=this.src="./src/assets/images/default-image.png"
         />
