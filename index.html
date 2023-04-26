@@ -17,14 +17,19 @@
     </header>
     <main class="p-5 mt-28">
       <!-- FILTROS -->
-      <div id="filters">
+      <div id="filters" class="inline-flex justify-center items-center w-full gap-x-8">
         <label>
           Nome:
-          <input type="text" id="name" name="name" />
+          <input
+            type="text"
+            id="name"
+            name="name"
+            class="border-b-[1px] border-b-grey-500 outline-none"
+          />
         </label>
         <label>
           Marca:
-          <select name="brand" id="brand">
+          <select name="brand" id="brand" class="outline-none">
             <option value="" selected>Todos</option>
             <option value="almay">almay</option>
             <option value="alva">alva</option>
@@ -87,7 +92,7 @@
         </label>
         <label>
           Tipo:
-          <select name="type" id="type">
+          <select name="type" id="type" class="outline-none">
             <option value="" selected>Todos</option>
             <option value="bronzer">bronzer</option>
             <option value="blush">blush</option>
@@ -101,7 +106,7 @@
             <option value="eyebrow">eyebrow</option>
           </select>
         </label>
-        <select name="order" id="order">
+        <select name="order" id="order" class="outline-none">
           <option value="rating" selected>Melhores Avaliados</option>
           <option value="menores-precos">Menores Preços</option>
           <option value="maiores-precos">Maiores Preços</option>
