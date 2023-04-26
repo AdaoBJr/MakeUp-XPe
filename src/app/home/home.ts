@@ -7,101 +7,102 @@ import {
 
 const { getProducts, getProductsByFilter } = useMakeupApi();
 
-//Iniciando com Loading
-loadingAnimation({ isFetching: true, querySelector: '#loading' });
-
-//Fazendo requisição a api
-const resProducts = await getProducts();
-let productsToRender = [...resProducts];
-saveInLocalStorage(PROD_KEY, productsToRender);
-
-//Removendo loading com o retorno da api
-if (productsToRender.length > 0)
-  loadingAnimation({ isFetching: false, querySelector: '#loading' });
-
-//Filtros
-const inputName = document.querySelector<HTMLInputElement>('#name')!;
-const selectBrand = document.querySelector<HTMLSelectElement>('#brand')!;
-const selectType = document.querySelector<HTMLSelectElement>('#type')!;
-const selectOrder = document.querySelector<HTMLSelectElement>('#order')!;
-
-inputName.addEventListener('change', async () => {
-  filterByName();
-  renderProducts();
-});
-
-selectBrand.addEventListener('change', async () => {
-  await filterProducts();
-  renderProducts();
-});
-
-selectType.addEventListener('change', async () => {
-  await filterProducts();
-  renderProducts();
-});
-
-selectOrder.addEventListener('change', async () => {
-  filterBySort();
-  renderProducts();
-});
-
-async function filterProducts() {
+(async () => {
+  //Iniciando com Loading
   loadingAnimation({ isFetching: true, querySelector: '#loading' });
-  const brandFilter = selectBrand.value || null;
-  const typeFilter = selectType.value || null;
-  const resProducts = await getProductsByFilter({ brandFilter, typeFilter });
-  productsToRender = [...resProducts];
-  loadingAnimation({ isFetching: false, querySelector: '#loading' });
-}
 
-function filterBySort() {
-  const valueSelectOrder = selectOrder.value;
+  //Fazendo requisição a api
+  const resProducts = await getProducts();
+  let productsToRender = [...resProducts];
+  saveInLocalStorage(PROD_KEY, productsToRender);
 
-  if (valueSelectOrder === 'rating')
-    productsToRender = productsToRender.sort((a, b) => b.rating! - a.rating!);
-  if (valueSelectOrder === 'menores-precos')
-    productsToRender = productsToRender.sort(
-      (a, b) => Number(a.price)! - Number(b.price)!
-    );
-  if (valueSelectOrder === 'maiores-precos')
-    productsToRender = productsToRender.sort(
-      (a, b) => Number(b.price)! - Number(a.price)!
-    );
-  if (valueSelectOrder === 'nome')
-    productsToRender = productsToRender.sort((a, b) => a.name!.localeCompare(b.name!));
-  if (valueSelectOrder === 'nome-desc')
-    productsToRender = productsToRender.sort((a, b) => {
-      if (a.name! < b.name!) {
-        return 1;
-      }
-      if (a.name! > b.name!) {
-        return -1;
-      }
-      return 0;
-    });
-}
+  //Removendo loading com o retorno da api
+  if (productsToRender.length > 0)
+    loadingAnimation({ isFetching: false, querySelector: '#loading' });
 
-function filterByName() {
-  const valueInputName = inputName.value.trim().toLowerCase();
+  //Filtros
+  const inputName = document.querySelector<HTMLInputElement>('#name')!;
+  const selectBrand = document.querySelector<HTMLSelectElement>('#brand')!;
+  const selectType = document.querySelector<HTMLSelectElement>('#type')!;
+  const selectOrder = document.querySelector<HTMLSelectElement>('#order')!;
 
-  if (valueInputName) {
-    productsToRender = productsToRender
-      // .slice(60, 150)
-      .filter((item) => item.name?.trim().toLowerCase().startsWith(valueInputName));
-  } else {
+  inputName.addEventListener('change', async () => {
+    filterByName();
+    renderProducts();
+  });
+
+  selectBrand.addEventListener('change', async () => {
+    await filterProducts();
+    renderProducts();
+  });
+
+  selectType.addEventListener('change', async () => {
+    await filterProducts();
+    renderProducts();
+  });
+
+  selectOrder.addEventListener('change', async () => {
+    filterBySort();
+    renderProducts();
+  });
+
+  async function filterProducts() {
+    loadingAnimation({ isFetching: true, querySelector: '#loading' });
+    const brandFilter = selectBrand.value || null;
+    const typeFilter = selectType.value || null;
+    const resProducts = await getProductsByFilter({ brandFilter, typeFilter });
     productsToRender = [...resProducts];
+    loadingAnimation({ isFetching: false, querySelector: '#loading' });
   }
-}
 
-//Renderizando retorno da api na tela
-function renderProducts() {
-  const products = document.querySelector('#products')!;
-  products.innerHTML = '';
+  function filterBySort() {
+    const valueSelectOrder = selectOrder.value;
 
-  // const productsSlicedToAvoidSlow = productsToRender.slice(60, 150);
+    if (valueSelectOrder === 'rating')
+      productsToRender = productsToRender.sort((a, b) => b.rating! - a.rating!);
+    if (valueSelectOrder === 'menores-precos')
+      productsToRender = productsToRender.sort(
+        (a, b) => Number(a.price)! - Number(b.price)!
+      );
+    if (valueSelectOrder === 'maiores-precos')
+      productsToRender = productsToRender.sort(
+        (a, b) => Number(b.price)! - Number(a.price)!
+      );
+    if (valueSelectOrder === 'nome')
+      productsToRender = productsToRender.sort((a, b) => a.name!.localeCompare(b.name!));
+    if (valueSelectOrder === 'nome-desc')
+      productsToRender = productsToRender.sort((a, b) => {
+        if (a.name! < b.name!) {
+          return 1;
+        }
+        if (a.name! > b.name!) {
+          return -1;
+        }
+        return 0;
+      });
+  }
 
-  productsToRender.map((item) => {
-    products.innerHTML += `
+  function filterByName() {
+    const valueInputName = inputName.value.trim().toLowerCase();
+
+    if (valueInputName) {
+      productsToRender = productsToRender
+        // .slice(60, 150)
+        .filter((item) => item.name?.trim().toLowerCase().startsWith(valueInputName));
+    } else {
+      productsToRender = [...resProducts];
+    }
+  }
+
+  //Renderizando retorno da api na tela
+  function renderProducts() {
+    const products = document.querySelector('#products')!;
+    products.innerHTML = '';
+
+    const productsSlicedToAvoidSlow = productsToRender.slice(60, 150);
+
+    productsSlicedToAvoidSlow.map((item) => {
+      products.innerHTML += `
       <a id="product-${item.id}" href="details.html?id=${item.id}" >
         <div
           id="product-${item.id}"
@@ -141,7 +142,8 @@ function renderProducts() {
         </div>
       </a>
         `;
-  });
-}
+    });
+  }
 
-renderProducts();
+  renderProducts();
+})();
